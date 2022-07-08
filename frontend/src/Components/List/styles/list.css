@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+.list-background-img {
+    width: 100%;
+    height: 100%;
+    background-image: url("../views/listBackground.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.list-container {
+    width: 100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-content-box {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    border-radius: 35px;
+    background: linear-gradient(180deg, #FFFFFF 70.83%, rgba(255, 255, 255, 0) 100%);
+    flex-wrap: wrap; 
+    box-shadow: 0px 0px 10px grey;
+    margin-top: 40px;
+    background-color: #757171;
+}
+
+.list-title {
+    font-family: 'Poppins';
+    font-weight: 700;
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    color: #000000;
+    border: 2px swolid black;
+    /* background-color: #f3112f; */
+}
+.list-head-box{
+    width: 100%;
+    height: 10%;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: space-between;
+   align-items: center;
+}
+
+.list-btn-username{
+    width: 10%;
+    height: 30px;
+    background: linear-gradient(180deg, #82A0AA 0%, #A3CFCD 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: none;
+    font-family: 'poppins';
+    font-weight: 600;
+    font-size: 15px;
+    color: #757171;
+}
+.list-select-all-btn{
+    margin-left: 50px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.list-select-all-btn:hover{
+    width: 11%;
+    height: 37px;
+    font-size: 18px;
+}
+.list-username{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+}
+.list-card{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+   margin-top: 20px;
+    justify-content: space-evenly;
+    row-gap: 20px;
+    /* column-gap:20px; */
+}
+@media screen and (max-width:1440px) {
+    .navbar-heading-box {
+        height: 120px;
+    }
+    .navbar-img-style {
+        height: 115px;
+    }
+    .text-font-capital {
+        font-size: 125px;
+    }
+    h1{
+        font-size: 4rem;
+    }
+}
+@media screen and (max-width:1024px) {
+    h1 {
+        font-size: 3rem;
+    }
+    .card-text {
+        font-size: 13px!important;
+    }
+    .card-input-box {
+        width: 53%;
+        font-size: 10px;
+    }
+}
+@media screen and (max-width:768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .list-btn-username {
+        width: 20%;
+    }
+    .card {
+        width: 48%;
+    }
+}
+@media screen and (max-width:480px) {
+    .list-select-all-btn {
+        margin-left: 20px;
+    }    
+    .list-btn-username {
+        width: 32%;
+        font-size: 13px;
+    }
+    .list-username {
+        margin-right: 20px;
+    }
+    h1 {
+        font-size: 1.3rem;
+    }
+    .text-font-capital {
+        font-size: 70px;
+    }
+    .card {
+        width: 90%;
+    }
+}
