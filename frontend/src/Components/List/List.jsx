@@ -9,7 +9,6 @@ import {get_all_user_action_creator,
 
 const List = () => {
   const dispatch = useDispatch()
-  const items = [1,2,3,4,5,6,7,8,9,10,11,12]
   const {allContacts} = useSelector((state)=>state.all_contacts_reducer)
   const [selectAllBtn, setSelectAllBtn] = useState(false)
   const [checked, setChecked] = useState(false)
@@ -38,7 +37,8 @@ const onDeletingAllContacts = () => {
             <span className="list-username list-btn-username">User Name</span>
           </div>
           <div className="list-card">
-           {allContacts.length == 0 ? (<h4 style={{ position: "absolute", left: "40%" }}>No Data Found</h4>) :allContacts.map((contact)=>
+           {allContacts == 0 ? (<h4 style={{ position: "absolute", left: "40%" }}>No Data Found</h4>) :
+           allContacts.map((contact)=>
            <Card 
            key={contact._id} 
            contact={contact}

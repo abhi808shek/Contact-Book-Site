@@ -53,7 +53,7 @@ const LoginPage = () => {
                 dispatch(login_action_creator(userInfo));
                 setEmail("");
                 setPassword("");
-                navigate("/list")
+                // navigate("/list")
               }}
             >
               Login

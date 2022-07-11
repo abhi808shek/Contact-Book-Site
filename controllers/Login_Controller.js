@@ -21,7 +21,7 @@ const match_login_data = async(req,res)=>{
     })
 
    } catch (error) {
-      res.json(error.message);
+      res.status(500).json({message:error.message});
    }
 }
 
