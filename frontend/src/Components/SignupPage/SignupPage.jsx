@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles/signup.css";
 import { useDispatch } from "react-redux";
 import { singup_data_action_creator } from "./signup-action-creator";
+import {useNavigate} from "react-router-dom"
 
 const SignupPage = () => {
   const dispatch = useDispatch();
@@ -9,15 +10,9 @@ const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Cpassword, setCPassword] = useState("");
-
+  const navigate = useNavigate()
   const userInfo = { name, email, password, Cpassword };
-  //       await axios.post("https://contact-book-site.herokuapp.com/signup",userInfo)
-  //
-  //       // history.push("/list");
-  //   } catch (error) {
-  //       console.log(error.message);
-  //   }
-  // }
+
   return (
     <div className="signup-background-img">
       <div className="signup-container">
@@ -92,6 +87,7 @@ const SignupPage = () => {
               setEmail("");
               setPassword("");
               setCPassword("");
+              navigate("/list")
             }}
           >
             Submit

@@ -3,15 +3,15 @@ import "./styles/loginPage.css";
 import whatsappIcon from "./views/whatsappIcon.png";
 import mailIcon from "./views/mailIcon.png";
 import locationIcon from "./views/locationIcon.png";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { login_action_creator } from "./login-action-creator";
 import { useDispatch } from "react-redux";
-
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const userInfo = { email, password };
+  const navigate = useNavigate()
   return (
     <div className="background-img">
       <div className="login-container">
@@ -53,6 +53,7 @@ const LoginPage = () => {
                 dispatch(login_action_creator(userInfo));
                 setEmail("");
                 setPassword("");
+                navigate("/list")
               }}
             >
               Login
