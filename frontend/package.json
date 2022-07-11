@@ -1,6 +1,9 @@
 {
+  "homepage":"https://dashboard.heroku.com/apps/contact-book-site",
   "name": "contact-site",
   "version": "0.1.0",
+  "proxy":"https://dashboard.heroku.com/apps/contact-book-site",
+
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
