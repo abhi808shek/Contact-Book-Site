@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const singup_data_action_creator = (userInfo) => async (dispatch) => {
   try {
-    await axios.post("http://localhost:8000/signup", userInfo);
+    await axios.post("https://contact-book-site.herokuapp.com/signup", userInfo);
   } catch (error) {
     console.log(error.message);
   }

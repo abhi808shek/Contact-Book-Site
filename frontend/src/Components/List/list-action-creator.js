@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 export const add_user_action_creator = (data)=>async(dispatch)=>{
-    const response = await axios.get("http://localhost:8000/contactdetails",data)
+    const response = await axios.get("https://contact-book-site.herokuapp.com/contactdetails",data)
     console.log("response",response.data);
     dispatch({
         type:"ADD_USER_CONTACT_DETAIL",
@@ -13,7 +13,7 @@ export const add_user_action_creator = (data)=>async(dispatch)=>{
 
 
 export const get_all_user_action_creator = ()=>async(dispatch)=>{
-    const response = await axios.get("http://localhost:8000/contactdetails")
+    const response = await axios.get("https://contact-book-site.herokuapp.com/contactdetails")
     dispatch({
         type:"GET_ALL_USER_CONTACT_DETAIL",
         payload:response.data.data
