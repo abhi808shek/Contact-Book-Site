@@ -1,8 +1,8 @@
 {
-  "homepage":"https://dashboard.heroku.com/apps/contact-book-site",
+  "homepage":"https://contact-book-site.herokuapp.com/",
   "name": "contact-site",
   "version": "0.1.0",
-  "proxy":"https://dashboard.heroku.com/apps/contact-book-site",
+  "proxy":"https://contact-book-site.herokuapp.com/",
 
   "private": true,
   "dependencies": {
