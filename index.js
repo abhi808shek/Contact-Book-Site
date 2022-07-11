@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 8000;
 
 if(process.env.NODE_ENV === 'production'){
     //set static folder
-    app.use(express.static('/frontend/build'));
+    app.use(express.static('frontend/build'));
 }
 app.get('*',(req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
@@ -28,6 +28,6 @@ app.use("/",login_router);
 app.use("/",user_contact_router);
 
 
-app.listen(8000,()=>{
+app.listen(PORT,()=>{
     console.log("Server COnnected");
 })
