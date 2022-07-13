@@ -13,6 +13,7 @@ const user_contact_detail = async(req,res)=>{
 const get_all_contact_detail = async(req,res)=>{
     try {
         const response =  await Contact_Details.find()
+        console.log(response);
         res.status(200).json({status:"success",message:"Retrived All Data Successfully",data:response})
     } catch (error) {
         res.status(500).json({error:error.message})

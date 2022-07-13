@@ -7,12 +7,12 @@ import {get_all_user_action_creator,
   delete_all_user_action_creator} from "./list-action-creator"
 
 
-const List = () => {
+const List = ({name}) => {
   const dispatch = useDispatch()
   const {allContacts} = useSelector((state)=>state.all_contacts_reducer)
   const [selectAllBtn, setSelectAllBtn] = useState(false)
   const [checked, setChecked] = useState(false)
-
+console.log(allContacts);
   useEffect(() => {
     dispatch(get_all_user_action_creator())
   }, [])
@@ -34,10 +34,10 @@ const onDeletingAllContacts = () => {
                 setChecked(true)
                }}>Select All</button>}
            
-            <span className="list-username list-btn-username">User Name</span>
+            <span className="list-username list-btn-username">{name}</span>
           </div>
           <div className="list-card">
-           {allContacts == 0 ? (<h4 style={{ position: "absolute", left: "40%" }}>No Data Found</h4>) :
+           {allContacts.length === 0 ? (<h4 style={{ position: "absolute", left: "40%" }}>No Data Found</h4>) :
            allContacts.map((contact)=>
            <Card 
            key={contact._id} 

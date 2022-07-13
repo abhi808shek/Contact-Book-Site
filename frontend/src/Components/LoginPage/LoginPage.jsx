@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./styles/loginPage.css";
 import whatsappIcon from "./views/whatsappIcon.png";
 import mailIcon from "./views/mailIcon.png";
@@ -6,12 +6,19 @@ import locationIcon from "./views/locationIcon.png";
 import { NavLink,useNavigate } from "react-router-dom";
 import { login_action_creator } from "./login-action-creator";
 import { useDispatch } from "react-redux";
-const LoginPage = () => {
+
+
+const LoginPage = ({isAuthenticated}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const userInfo = { email, password };
   const navigate = useNavigate()
+
+  useEffect(() => {
+    isAuthenticated && navigate("/list")
+  }, [isAuthenticated])
+  
   return (
     <div className="background-img">
       <div className="login-container">
@@ -53,7 +60,7 @@ const LoginPage = () => {
                 dispatch(login_action_creator(userInfo));
                 setEmail("");
                 setPassword("");
-                // navigate("/list")
+                navigate("/list")
               }}
             >
               Login

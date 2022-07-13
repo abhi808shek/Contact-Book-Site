@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import "./styles/signup.css";
 import { useDispatch } from "react-redux";
 import { singup_data_action_creator } from "./signup-action-creator";
 import {useNavigate} from "react-router-dom"
 
-const SignupPage = () => {
+const SignupPage = ({isAuthenticated}) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,6 +12,10 @@ const SignupPage = () => {
   const [Cpassword, setCPassword] = useState("");
   const navigate = useNavigate()
   const userInfo = { name, email, password, Cpassword };
+
+  useEffect(() => {
+    isAuthenticated && navigate("/list")
+  }, [])
 
   return (
     <div className="signup-background-img">
