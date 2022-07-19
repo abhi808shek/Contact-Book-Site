@@ -13,7 +13,7 @@ export const add_user_action_creator = (data)=>async(dispatch)=>{
 
 
 export const get_all_user_action_creator = ()=>async(dispatch)=>{
-    const response = await axios.get("https://contact-book-site.herokuapp.com/contactdetails")
+    const response = await axios.get("http://localhost:8000/contactdetails")
     console.log("response",response.data);
     dispatch({
         type:"GET_ALL_USER_CONTACT_DETAIL",

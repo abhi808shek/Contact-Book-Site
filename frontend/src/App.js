@@ -41,9 +41,9 @@ const App = () => {
           exact
           path="/list"
           element={
-            <PrivateRoutes isAuthenticated={accessTokenObj}>
+            // <PrivateRoutes isAuthenticated={accessTokenObj}>
+            // {/* </PrivateRoutes> */}
               <List name={userName} />
-            </PrivateRoutes>
           }
         />
       </Routes>

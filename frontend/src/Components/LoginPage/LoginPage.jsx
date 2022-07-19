@@ -17,6 +17,7 @@ const LoginPage = ({isAuthenticated}) => {
 
   useEffect(() => {
     isAuthenticated && navigate("/list")
+    console.log(isAuthenticated);
   }, [isAuthenticated])
   
   return (
