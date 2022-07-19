@@ -59,8 +59,8 @@ const LoginPage = ({isAuthenticated}) => {
               className="button-style"
               onClick={() => {
                 dispatch(login_action_creator(userInfo));
-                setEmail("");
-                setPassword("");
+                // setEmail("");
+                // setPassword("");
                 navigate("/list")
               }}
             >

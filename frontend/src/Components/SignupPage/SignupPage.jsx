@@ -15,7 +15,7 @@ const SignupPage = ({isAuthenticated}) => {
 
   useEffect(() => {
     isAuthenticated && navigate("/list")
-  }, [])
+  }, [isAuthenticated])
 
   return (
     <div className="signup-background-img">

@@ -3,7 +3,9 @@ import axios from "axios";
 
 
 export const add_user_action_creator = (data)=>async(dispatch)=>{
-    const response = await axios.post("https://contact-book-site.herokuapp.com/contactdetails",data)
+    const response = await axios.post("/contactdetails",data,{
+       
+    })
     console.log("response",response.data);
     dispatch({
         type:"ADD_USER_CONTACT_DETAIL",
@@ -13,7 +15,12 @@ export const add_user_action_creator = (data)=>async(dispatch)=>{
 
 
 export const get_all_user_action_creator = ()=>async(dispatch)=>{
-    const response = await axios.get("http://localhost:8000/contactdetails")
+    const response = await axios.get("/contactdetails",{
+        headers: {
+            // Content-Type: "application/json",
+            authorization:`Bearer ${localStorage.getItem("accessToken")}`
+        }
+    })
     console.log("response",response.data);
     dispatch({
         type:"GET_ALL_USER_CONTACT_DETAIL",
@@ -22,7 +29,7 @@ export const get_all_user_action_creator = ()=>async(dispatch)=>{
 }
 
 export const delete_single_user_action_creator = (id)=>async(dispatch)=>{
-    const response = await axios.delete(`https://contact-book-site.herokuapp.com/contactdetails/${id}`)
+    const response = await axios.delete(`/contactdetails/${id}`)
     console.log("response",response);
     dispatch({
         type:"DELETE_SINGLE_USER_CONTACT_DETAIL",
@@ -31,7 +38,7 @@ export const delete_single_user_action_creator = (id)=>async(dispatch)=>{
 }
 
 export const delete_all_user_action_creator = ()=>async(dispatch)=>{
-    const response = await axios.delete("https://contact-book-site.herokuapp.com/contactdetails")
+    const response = await axios.delete("/contactdetails")
     console.log("response",response);
     dispatch({
         type:"DELETE_ALL_USER_CONTACT_DETAIL",
