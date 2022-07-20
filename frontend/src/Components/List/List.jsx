@@ -16,10 +16,10 @@ const List = ({ name }) => {
   const [selectAllBtn, setSelectAllBtn] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
   const [searchBox, setSearchBox] = useState("");
-  const [filteredData, setFilteredData] = useState(second);
+  const [filteredData, setFilteredData] = useState([]);
   useEffect(() => {
     dispatch(get_all_user_action_creator());
-    if (search == "") {
+    if (searchBox == "") {
       setFilteredData(allContacts);
     }
   }, [filteredData]);
@@ -80,7 +80,7 @@ const List = ({ name }) => {
                 Add Contact
               </NavLink>
             </button>
-
+            <button className="list-select-all-btn list-btn-username">Logout</button>
             <span className="list-username list-btn-username">{name}</span>
           </div>
           <div className="list-card">
