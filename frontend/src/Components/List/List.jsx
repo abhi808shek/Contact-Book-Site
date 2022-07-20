@@ -14,10 +14,28 @@ const List = ({ name }) => {
   const dispatch = useDispatch();
   const { allContacts } = useSelector((state) => state.all_contacts_reducer);
   const [selectAllBtn, setSelectAllBtn] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [allChecked, setAllChecked] = useState(false);
+  const [searchBox, setSearchBox] = useState("");
+  const [filteredData, setFilteredData] = useState(second);
   useEffect(() => {
     dispatch(get_all_user_action_creator());
-  }, []);
+    if (search == "") {
+      setFilteredData(allContacts);
+    }
+  }, [filteredData]);
+
+  const filteringData = (event) => {
+    setSearchBox(event.target.value);
+    const resultedContact = allContacts.filter((contact) => {
+      return (
+        contact.name.includes(event.target.value) ||
+        contact.email.includes(event.target.value) ||
+        contact.phone_no.toString().includes(event.target.value) ||
+        contact.address.includes(event.target.value)
+      );
+    });
+    setFilteredData(resultedContact);
+  };
 
   const onDeletingAllContacts = () => {
     dispatch(delete_all_user_action_creator());
@@ -41,13 +59,19 @@ const List = ({ name }) => {
                 className="list-select-all-btn list-btn-username"
                 onClick={() => {
                   setSelectAllBtn(true);
-                  setChecked(true);
+                  setAllChecked(!allChecked);
                 }}
               >
                 Select All
               </button>
             )}
-            <input className="list-search" type="text" name="" id="" placeholder="Search Contacts"/>
+            <input
+              className="list-search"
+              type="text"
+              value={searchBox}
+              placeholder="Search Contacts"
+              onChange={filteringData}
+            />
             <button className="list-select-all-btn list-btn-username">
               <NavLink
                 to="/contactform"
@@ -60,20 +84,20 @@ const List = ({ name }) => {
             <span className="list-username list-btn-username">{name}</span>
           </div>
           <div className="list-card">
-            {allContacts.length === 0 ? (
+            {filteredData.length === 0 ? (
               <div className="no-data-found">
                 <img src={nodata} alt="" />
                 <h4 className="no-data-list">No Data Found</h4>
               </div>
             ) : (
-              allContacts.map((contact) => (
+              filteredData.map((contact) => (
                 <Card
                   key={contact._id}
                   contact={contact}
                   dispatch={dispatch}
                   deleteSingleUser={delete_single_user_action_creator}
-                  checked={checked}
-                  setChecked={setChecked}
+                  allChecked={allChecked}
+                  setAllChecked={setAllChecked}
                 />
               ))
             )}

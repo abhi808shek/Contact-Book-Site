@@ -1,20 +1,23 @@
-import React ,{ useState } from "react";
+import React ,{ useState,useEffect } from "react";
 import "./styles/card.css";
 import cardProfile from "./views/cardProfile.png";
 import {NavLink} from "react-router-dom"
 
 
-const Card = ({contact,dispatch,deleteSingleUser,checked}) => {
+const Card = ({contact,dispatch,deleteSingleUser,allChecked,setAllChecked}) => {
  const [singleChecked, setSingleChecked] = useState(false)
- const checkedBox = ()=>{
-  if (checked && !singleChecked) return true;
-  return singleChecked;
- }
+ useEffect(() => {
+  if(allChecked){
+    setSingleChecked(true);
+  }else{
+    setAllChecked(false);
+  }
+}, [allChecked]);
 
  const onChangeHandler = () => {
-  if (checked ) return false
-  return !singleChecked;
- }
+  setSingleChecked(!singleChecked);
+};
+
   return (
     <>
       <div className="card">
@@ -87,7 +90,7 @@ const Card = ({contact,dispatch,deleteSingleUser,checked}) => {
             <button className="card-btn" onClick={()=>dispatch(deleteSingleUser(contact._id))}>Delete</button>
           </div>
           <div>
-            <input className="card-checkbox" type="checkbox" name="" id="" checked={checkedBox } onClick={onChangeHandler}/>
+            <input className="card-checkbox" type="checkbox" name="" id="" checked={singleChecked} onClick={onChangeHandler}/>
           </div>
         </div>
       </div>

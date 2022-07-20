@@ -4,7 +4,9 @@ import axios from "axios";
 
 export const add_user_action_creator = (data)=>async(dispatch)=>{
     const response = await axios.post("/contactdetails",data,{
-       
+        headers: {
+            authorization:`Bearer ${localStorage.getItem("accessToken")}`
+        }
     })
     console.log("response",response.data);
     dispatch({
@@ -15,9 +17,9 @@ export const add_user_action_creator = (data)=>async(dispatch)=>{
 
 
 export const get_all_user_action_creator = ()=>async(dispatch)=>{
-    const response = await axios.get("/contactdetails",{
+    const response = await axios.get("/contactdetails"
+    ,{
         headers: {
-            // Content-Type: "application/json",
             authorization:`Bearer ${localStorage.getItem("accessToken")}`
         }
     })
@@ -29,7 +31,11 @@ export const get_all_user_action_creator = ()=>async(dispatch)=>{
 }
 
 export const delete_single_user_action_creator = (id)=>async(dispatch)=>{
-    const response = await axios.delete(`/contactdetails/${id}`)
+    const response = await axios.delete(`/contactdetails/${id}`,{
+        headers: {
+            authorization:`Bearer ${localStorage.getItem("accessToken")}`
+        }
+    })
     console.log("response",response);
     dispatch({
         type:"DELETE_SINGLE_USER_CONTACT_DETAIL",
@@ -38,7 +44,11 @@ export const delete_single_user_action_creator = (id)=>async(dispatch)=>{
 }
 
 export const delete_all_user_action_creator = ()=>async(dispatch)=>{
-    const response = await axios.delete("/contactdetails")
+    const response = await axios.delete("/contactdetails",{
+        headers: {
+            authorization:`Bearer ${localStorage.getItem("accessToken")}`
+        }
+    })
     console.log("response",response);
     dispatch({
         type:"DELETE_ALL_USER_CONTACT_DETAIL",
