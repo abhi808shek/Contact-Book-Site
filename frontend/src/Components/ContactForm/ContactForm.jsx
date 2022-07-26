@@ -1,28 +1,31 @@
 // import { set } from "mongoose";
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import "./styles/contactForm.css";
 import Profile_Photo from "./views/profile.png";
-import {useDispatch} from "react-redux"
-import {useNavigate} from "react-router-dom"
-import {singup_data_action_creator} from "./contactForm-action-creator"
-const ContactForm = () => {
-  const [name, setName] = useState("")
-  const [phone_no, setPhoneNo] = useState("")
-  const [email, setEmail] = useState("")
-  const [address, setAddress] = useState("")
-const dispatch = useDispatch()
-const navigate = useNavigate()
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { singup_data_action_creator } from "./contactForm-action-creator";
 
-const onSubmitData = () => {
-  const userInfo = {
-    name,
-    phone_no,
-    email,
-    address
-  }
-    dispatch(singup_data_action_creator(userInfo))
-    navigate("/list")
-}
+
+const ContactForm = () => {
+  const [name, setName] = useState("");
+  const [phone_no, setPhoneNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onSubmitData = () => {
+    const userInfo = {
+      // userId:userData,
+      name,
+      phone_no,
+      email,
+      address,
+    };
+    dispatch(singup_data_action_creator(userInfo));
+    navigate("/list");
+  };
   return (
     <div>
       <div className="contact-form-background-img">
@@ -44,8 +47,6 @@ const onSubmitData = () => {
                   />
                 </div>
 
-                
-
                 <div className="contact-form-inner-box">
                   <label htmlFor="" className="contact-form-label">
                     PhoneNo
@@ -53,10 +54,9 @@ const onSubmitData = () => {
                   <input
                     type="text"
                     className="contact-form-input-box"
-                    placeholder="Choose a strong password "
+                    placeholder="Phone Number"
                     value={phone_no}
                     onChange={(event) => setPhoneNo(event.target.value)}
-
                   />
                 </div>
                 <div className="contact-form-inner-box">
@@ -69,7 +69,6 @@ const onSubmitData = () => {
                     placeholder="Ex. xxx@mail.com "
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
-
                   />
                 </div>
                 <div className="contact-form-inner-box ">
@@ -79,13 +78,17 @@ const onSubmitData = () => {
                   <input
                     type="text"
                     className="contact-form-input-box"
-                    placeholder="Choose a strong password "
+                    placeholder="Enter Address"
                     value={address}
                     onChange={(event) => setAddress(event.target.value)}
-
                   />
                 </div>
-                <button className="contact-form-submit-btn" onClick={onSubmitData}>Save</button>
+                <button
+                  className="contact-form-submit-btn"
+                  onClick={onSubmitData}
+                >
+                  Save
+                </button>
               </div>
               <div className="contact-form-image-box">
                 <h1 className="contact-form-profile-text">Profile Photo</h1>

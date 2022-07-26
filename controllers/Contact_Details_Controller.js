@@ -23,7 +23,7 @@ const get_all_contact_detail = async(req,res)=>{
 const get_single_contact_detail = async(req,res)=>{
     try {
         const _id = req.params.id;
-        const userContact1 = await Contact_Details.find({_id})
+        const userContact1 = await Contact_Details.findById({_id})
         res.status(200).json({status:"success",message:"Retrived Single Data Successfully",data:userContact1})
         console.log(userContact1);
     } catch (error) {

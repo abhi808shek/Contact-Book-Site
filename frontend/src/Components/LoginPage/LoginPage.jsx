@@ -5,7 +5,7 @@ import mailIcon from "./views/mailIcon.png";
 import locationIcon from "./views/locationIcon.png";
 import { NavLink,useNavigate } from "react-router-dom";
 import { login_action_creator } from "./login-action-creator";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const LoginPage = ({isAuthenticated}) => {
@@ -14,11 +14,10 @@ const LoginPage = ({isAuthenticated}) => {
   const dispatch = useDispatch();
   const userInfo = { email, password };
   const navigate = useNavigate()
-
+  const {userId } = useSelector((state)=>state.login_reducer)
   useEffect(() => {
-    isAuthenticated && navigate("/list")
-    console.log(isAuthenticated);
-  }, [isAuthenticated])
+    userId && navigate("/list")
+  }, [userId])
   
   return (
     <div className="background-img">
@@ -59,9 +58,6 @@ const LoginPage = ({isAuthenticated}) => {
               className="button-style"
               onClick={() => {
                 dispatch(login_action_creator(userInfo));
-                // setEmail("");
-                // setPassword("");
-                navigate("/list")
               }}
             >
               Login

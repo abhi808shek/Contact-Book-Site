@@ -1,21 +1,23 @@
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/signup.css";
 import { useDispatch } from "react-redux";
 import { singup_data_action_creator } from "./signup-action-creator";
-import {useNavigate} from "react-router-dom"
+import {useSelector} from "react-redux"
+import { useNavigate } from "react-router-dom";
 
-const SignupPage = ({isAuthenticated}) => {
+const SignupPage = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Cpassword, setCPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const userInfo = { name, email, password, Cpassword };
 
+  const { userId } = useSelector((state) => state.login_reducer);
   useEffect(() => {
-    isAuthenticated && navigate("/list")
-  }, [isAuthenticated])
+    userId && navigate("/list");
+  }, [userId]);
 
   return (
     <div className="signup-background-img">
@@ -91,7 +93,7 @@ const SignupPage = ({isAuthenticated}) => {
               setEmail("");
               setPassword("");
               setCPassword("");
-              navigate("/list")
+              navigate("/login");
             }}
           >
             Submit

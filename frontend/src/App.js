@@ -16,8 +16,16 @@ const App = () => {
     <>
       <Navbar />
       <Routes>
-        <Route exact path="/login" element={<LoginPage isAuthenticated={accessTokenObj}/>} />
-        <Route exact path="/signup" element={<SignupPage isAuthenticated={accessTokenObj}/>} />
+        <Route
+          exact
+          path="/login"
+          element={<LoginPage isAuthenticated={accessTokenObj} />}
+        />
+        <Route
+          exact
+          path="/signup"
+          element={<SignupPage isAuthenticated={accessTokenObj} />}
+        />
 
         <Route
           exact
@@ -30,7 +38,7 @@ const App = () => {
         />
         <Route
           exact
-          path="/updateform"
+          path="/updateform/:id"
           element={
             <PrivateRoutes isAuthenticated={accessTokenObj}>
               <UpdateForm />
@@ -42,8 +50,8 @@ const App = () => {
           path="/list"
           element={
             <PrivateRoutes isAuthenticated={accessTokenObj}>
-            <List name={userName} />
-             </PrivateRoutes> 
+              <List name={userName} />
+            </PrivateRoutes>
           }
         />
       </Routes>

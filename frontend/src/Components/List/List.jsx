@@ -2,28 +2,36 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
 import "./styles/list.css";
-import {
+import {get_single_user_action_creator,
   get_all_user_action_creator,
   delete_single_user_action_creator,
   delete_all_user_action_creator,
 } from "./list-action-creator";
 import { NavLink } from "react-router-dom";
 import nodata from "./views/nodata.png";
+import { useNavigate } from "react-router-dom";
+import {logout_action_creator} from "../LoginPage/login-action-creator"
+
 
 const List = ({ name }) => {
   const dispatch = useDispatch();
+const navigate = useNavigate();
+  const deleteLocalStorage = () =>{
+    localStorage.removeItem("name")
+    localStorage.removeItem("accessToken")
+    dispatch(logout_action_creator())
+    console.log("logged out");
+    navigate("/login")
+  }
   const { allContacts } = useSelector((state) => state.all_contacts_reducer);
   const [selectAllBtn, setSelectAllBtn] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
   const [searchBox, setSearchBox] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+
   useEffect(() => {
     dispatch(get_all_user_action_creator());
-    if (searchBox == "") {
-      setFilteredData(allContacts);
-    }
   }, [filteredData]);
-
   const filteringData = (event) => {
     setSearchBox(event.target.value);
     const resultedContact = allContacts.filter((contact) => {
@@ -80,11 +88,25 @@ const List = ({ name }) => {
                 Add Contact
               </NavLink>
             </button>
-            <button className="list-select-all-btn list-btn-username">Logout</button>
+            <button className="list-select-all-btn list-btn-username"
+            onClick={
+              deleteLocalStorage
+            }>Logout</button>
             <span className="list-username list-btn-username">{name}</span>
           </div>
           <div className="list-card">
-            {filteredData.length === 0 ? (
+            {searchBox === "" ? allContacts.map((contact)=>(
+              <Card
+              key={contact._id}
+              contact={contact}
+              dispatch={dispatch}
+              deleteSingleUser={delete_single_user_action_creator}
+              allChecked={allChecked}
+              setAllChecked={setAllChecked}
+              getSingleUser={get_all_user_action_creator}
+            />))
+            :
+            filteredData.length === 0 ? (
               <div className="no-data-found">
                 <img src={nodata} alt="" />
                 <h4 className="no-data-list">No Data Found</h4>
@@ -98,9 +120,11 @@ const List = ({ name }) => {
                   deleteSingleUser={delete_single_user_action_creator}
                   allChecked={allChecked}
                   setAllChecked={setAllChecked}
+                  getSingleUser={get_all_user_action_creator}
                 />
               ))
             )}
+           
           </div>
         </div>
       </div>

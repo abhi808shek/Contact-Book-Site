@@ -13,9 +13,9 @@ const create_signup_user =async(req,res)=>{
     }
     const create_data = new Signup_Model(req.body)
     await create_data.save();
-    if (create_data) {
-        return res.status(200).json({message:"Data Saved SuccessFully"}) 
-    }
+    // if (create_data) {
+    //     return res.status(200).json({message:"Data Saved SuccessFully"}) 
+    // }
     const accessToken = jwt.sign({id:id},"dfzfdnsdfisfjsdfjksmfkfjfmfbvhdfbfnf",{expiresIn:"7d"})
     res.status(200).json({
       status:"success",

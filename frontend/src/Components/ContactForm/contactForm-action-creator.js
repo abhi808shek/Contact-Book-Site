@@ -2,8 +2,16 @@ import axios from "axios";
 
 export const singup_data_action_creator = (userInfo) => async (dispatch) => {
   try {
-   const result = await axios.post("/contactdetails", userInfo);
-   console.log(result.data);
+    const result = await axios.post(
+      "https://contact-book-site.herokuapp.com/contactdetails",
+      userInfo,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    );
+    console.log(result.data);
   } catch (error) {
     console.log(error.message);
   }

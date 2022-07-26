@@ -1,8 +1,22 @@
-import React from 'react'
-import "./styles/updateform.css"
-import Profile_Photo from "./views/profile.png"
+import React, { useEffect, useState } from "react";
+import "./styles/updateform.css";
+import { useDispatch, useSelector } from "react-redux";
+import Profile_Photo from "./views/profile.png";
 
 const UpdateForm = () => {
+  const { allContacts,updateContacts } = useSelector((state) => state.all_contacts_reducer);
+  const [name, setName] = useState("");
+  const [phone_no, setPhoneNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  console.log("update",updateContacts);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    setName(updateContacts.name);
+    setPhoneNo(updateContacts.phone_no);
+    setEmail(updateContacts.email);
+    setAddress(updateContacts.address);
+  }, [updateContacts]);
   return (
     <div>
       <div className="update-form-background-img">
@@ -19,6 +33,19 @@ const UpdateForm = () => {
                     type="text"
                     className="update-form-input-box"
                     placeholder="Ex. Johnny Depp "
+                    value={name}
+                  />
+                </div>
+
+                <div className="update-form-inner-box">
+                  <label htmlFor="" className="update-form-label">
+                    Phone No
+                  </label>
+                  <input
+                    type="text"
+                    className="update-form-input-box"
+                    placeholder="Phone Number"
+                    value={phone_no}
                   />
                 </div>
 
@@ -30,28 +57,19 @@ const UpdateForm = () => {
                     type="email"
                     className="update-form-input-box"
                     placeholder="Ex. xxx@mail.com "
-                  />
-                </div>
-
-                <div className="update-form-inner-box">
-                  <label htmlFor="" className="update-form-label">
-                    Choose Password
-                  </label>
-                  <input
-                    type="password"
-                    className="update-form-input-box"
-                    placeholder="Choose a strong password "
+                    value={email}
                   />
                 </div>
 
                 <div className="update-form-inner-box ">
                   <label htmlFor="" className="update-form-label">
-                    Confirm Password
+                    Address
                   </label>
                   <input
-                    type="password"
+                    type="text"
                     className="update-form-input-box"
-                    placeholder="Choose a strong password "
+                    placeholder="Enter Address"
+                    value={address}
                   />
                 </div>
                 <button className="update-form-submit-btn">Update</button>
@@ -59,7 +77,7 @@ const UpdateForm = () => {
               <div className="update-form-image-box">
                 <h1 className="update-form-profile-text">Profile Photo</h1>
                 <div>
-                  <img src={Profile_Photo} alt="" className='img'/>
+                  <img src={Profile_Photo} alt="" className="img" />
                 </div>
               </div>
             </div>
@@ -67,7 +85,7 @@ const UpdateForm = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UpdateForm
+export default UpdateForm;
