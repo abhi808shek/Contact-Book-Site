@@ -3,7 +3,7 @@ import axios from "axios";
 export const singup_data_action_creator = (userInfo) => async (dispatch) => {
   try {
     const result = await axios.post(
-      "https://contact-book-site.herokuapp.com/contactdetails",
+      "http://localhost:8000/contactdetails",
       userInfo,
       {
         headers: {

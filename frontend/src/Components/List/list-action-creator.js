@@ -17,7 +17,7 @@ export const add_user_action_creator = (data)=>async(dispatch)=>{
 
 
 export const get_all_user_action_creator = ()=>async(dispatch)=>{
-    const response = await axios.get("https://contact-book-site.herokuapp.com/contactdetails"
+    const response = await axios.get("http://localhost:8000/contactdetails"
     ,{
         headers: {
             authorization:`Bearer ${localStorage.getItem("accessToken")}`
@@ -30,7 +30,7 @@ export const get_all_user_action_creator = ()=>async(dispatch)=>{
 }
 
 export const get_single_user_action_creator = (id)=>async(dispatch)=>{
-    const response = await axios.get(`https://contact-book-site.herokuapp.com/contactdetails/${id}`
+    const response = await axios.get(`http://localhost:8000/contactdetails/${id}`
     ,{
         headers: {
             authorization:`Bearer ${localStorage.getItem("accessToken")}`
@@ -44,7 +44,7 @@ export const get_single_user_action_creator = (id)=>async(dispatch)=>{
 }
 
 export const delete_single_user_action_creator = (id)=>async(dispatch)=>{
-    const response = await axios.delete(`https://contact-book-site.herokuapp.com/contactdetails/${id}`,{
+    const response = await axios.delete(`http://localhost:8000/contactdetails/${id}`,{
         headers: {
             authorization:`Bearer ${localStorage.getItem("accessToken")}`
         }
@@ -57,7 +57,7 @@ export const delete_single_user_action_creator = (id)=>async(dispatch)=>{
 }
 
 export const delete_all_user_action_creator = ()=>async(dispatch)=>{
-    const response = await axios.delete("https://contact-book-site.herokuapp.com/contactdetails",{
+    const response = await axios.delete("http://localhost:8000/contactdetails",{
         headers: {
             authorization:`Bearer ${localStorage.getItem("accessToken")}`
         }

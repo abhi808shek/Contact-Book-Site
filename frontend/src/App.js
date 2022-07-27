@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import LoginPage from "./Components/LoginPage/LoginPage";
@@ -8,10 +8,20 @@ import ContactForm from "./Components/ContactForm/ContactForm";
 import UpdateForm from "./Components/UpdateForm/UpdateForm";
 import List from "./Components/List/List";
 import PrivateRoutes from "./Components/Private/PrivateRoutes";
+import { useDispatch, useSelector } from "react-redux";
+import {login_action_creator} from "./Components/LoginPage/login-action-creator"
+
 
 const App = () => {
+  const { userId } = useSelector((state) => state.login_reducer);
   const accessTokenObj = localStorage.getItem("accessToken");
   const userName = localStorage.getItem("name");
+const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(login_action_creator(localStorage.getItem("accessToken")))
+  }, [userId])
+  
   return (
     <>
       <Navbar />
