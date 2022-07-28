@@ -24,13 +24,15 @@ const navigate = useNavigate();
     navigate("/login")
   }
   const { allContacts } = useSelector((state) => state.all_contacts_reducer);
+  const { userId } = useSelector((state) => state.login_reducer);
+
   const [selectAllBtn, setSelectAllBtn] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
   const [searchBox, setSearchBox] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    dispatch(get_all_user_action_creator());
+    dispatch(get_all_user_action_creator(userId));
   }, [filteredData]);
   const filteringData = (event) => {
     setSearchBox(event.target.value);

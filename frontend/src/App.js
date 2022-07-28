@@ -9,18 +9,17 @@ import UpdateForm from "./Components/UpdateForm/UpdateForm";
 import List from "./Components/List/List";
 import PrivateRoutes from "./Components/Private/PrivateRoutes";
 import { useDispatch, useSelector } from "react-redux";
-import {login_action_creator} from "./Components/LoginPage/login-action-creator"
+import {setUserId_action_creator} from "./Components/LoginPage/login-action-creator"
 
 
 const App = () => {
-  const { userId } = useSelector((state) => state.login_reducer);
   const accessTokenObj = localStorage.getItem("accessToken");
   const userName = localStorage.getItem("name");
 const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(login_action_creator(localStorage.getItem("accessToken")))
-  }, [userId])
+    dispatch(setUserId_action_creator(localStorage.getItem("userId")))
+  }, [])
   
   return (
     <>

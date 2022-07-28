@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./styles/contactForm.css";
 import Profile_Photo from "./views/profile.png";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { singup_data_action_creator } from "./contactForm-action-creator";
 
@@ -14,10 +14,12 @@ const ContactForm = () => {
   const [address, setAddress] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { userId } = useSelector((state) => state.login_reducer);
 
   const onSubmitData = () => {
+
     const userInfo = {
-      // userId:userData,
+      userId,
       name,
       phone_no,
       email,

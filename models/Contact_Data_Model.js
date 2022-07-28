@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const emailValidator = require("email-validator");
 
 const contact_details = new mongoose.Schema({
-  // userId: { type: String,required:true},
+  userId: { type: String,required:true},
   name: { type: String, required: true },
   phone_no: { type: String, required: true },
   email: {

@@ -9,6 +9,8 @@ export const login_reducer = (state=initialState, action)=>{
             return {...state,data:action.payload,userId:action.userId}
             case "REMOVE_LOGOUT_INFO":
             return {...state,data:null,userId:null}
+            case "SET_USER_ID":
+            return {...state,userId:action.payload}
         default:
             return state;
     }

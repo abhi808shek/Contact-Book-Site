@@ -16,8 +16,9 @@ export const add_user_action_creator = (data)=>async(dispatch)=>{
 }
 
 
-export const get_all_user_action_creator = ()=>async(dispatch)=>{
-    const response = await axios.get("http://localhost:8000/contactdetails"
+export const get_all_user_action_creator = (userId)=>async(dispatch)=>{
+    console.log(userId);
+    const response = await axios.get(`http://localhost:8000/contactdetails/${userId}`
     ,{
         headers: {
             authorization:`Bearer ${localStorage.getItem("accessToken")}`
