@@ -45,6 +45,15 @@ const dispatch = useDispatch();
             </PrivateRoutes>
           }
         />
+          <Route
+          exact
+          path="*"
+          element={
+            <PrivateRoutes isAuthenticated={accessTokenObj}>
+              <List name={userName} />
+            </PrivateRoutes>
+          }
+        />
         <Route
           exact
           path="/updateform/:id"
@@ -56,7 +65,7 @@ const dispatch = useDispatch();
         />
         <Route
           exact
-          path="/list"
+          path=""
           element={
             <PrivateRoutes isAuthenticated={accessTokenObj}>
               <List name={userName} />
