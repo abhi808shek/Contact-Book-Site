@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dataBaseConnection = async() => {
     try {
       // const URI = process.env.MONGO_URL;
-      await mongoose.connect("mongodb+srv://contactbooksite:contactbooksite@cluster0.px5cs.mongodb.net/Contact-Book?retryWrites=true&w=majority")
+      await mongoose.connect("mongodb+srv://contactbooksite:uPRQhtGU80jUAJ2i@cluster0.evif0yp.mongodb.net/Contact-Book?retryWrites=true&w=majority")
       console.log("DataBase Connected Successfullyy....");
   
     }

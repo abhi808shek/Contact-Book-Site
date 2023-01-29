@@ -36,7 +36,7 @@ signupForm.pre("save",function() {
 
 signupForm.pre("save",async function () {
     const salt = await bcrypt.genSalt(10) 
-    const hashpass = bcrypt.hash(this.password, salt)
+    const hashpass = await bcrypt.hash(this.password, salt)
     this.password=hashpass;
 })
 

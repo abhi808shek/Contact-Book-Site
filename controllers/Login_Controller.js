@@ -5,7 +5,9 @@ const jwt = require('jsonwebtoken');
 const match_login_data = async(req,res)=>{
    try {
     const id = req.params.id
+    console.log("req.body",req.body);
    const login_success = await Signup_Model.find({email:req.body.email})
+   console.log("Login",login_success);
     if (!login_success) {
       res.status(400).json({message:"Email or Password is Invalid"})  
     }

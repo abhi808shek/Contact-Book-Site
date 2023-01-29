@@ -13,9 +13,9 @@ const UpdateForm = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     setName(updateContacts.name);
-    setPhoneNo(updateContacts.phone_no);
-    setEmail(updateContacts.email);
-    setAddress(updateContacts.address);
+    // setPhoneNo(updateContacts.phone_no);
+    // setEmail(updateContacts.email);
+    // setAddress(updateContacts.address);
   }, [updateContacts]);
   return (
     <div>

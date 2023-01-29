@@ -57,6 +57,7 @@ const LoginPage = ({isAuthenticated}) => {
             <button
               className="button-style"
               onClick={() => {
+                console.log("Frontent",userInfo);
                 dispatch(login_action_creator(userInfo));
               }}
             >

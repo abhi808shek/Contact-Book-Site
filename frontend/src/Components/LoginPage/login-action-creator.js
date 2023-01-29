@@ -2,7 +2,9 @@ import axios from "axios";
 
 export const login_action_creator = (userInfo) => async (dispatch) => {
   try {
+    console.log("action",userInfo);
     const result = await axios.post("http://localhost:8000/login", userInfo);
+    console.log("result",result);
     const {accessToken,name,userId} = result.data.obj
     localStorage.setItem('name', name);
     localStorage.setItem('accessToken', accessToken);
